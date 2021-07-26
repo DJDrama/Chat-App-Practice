@@ -14,6 +14,7 @@ import com.dj.chatapp.R
 import com.dj.chatapp.databinding.FragmentLoginBinding
 import com.dj.chatapp.util.Constants
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onEach
 
 @AndroidEntryPoint
@@ -36,7 +37,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
 
     private fun subscribeToEvents() {
         lifecycleScope.launchWhenStarted {
-            viewModel.loginEvent.onEach { event ->
+            viewModel.loginEvent.collect { event ->
                 when (event) {
                     is LoginEvent.ErrorInputTooShort -> {
                         setupIdleUiState()

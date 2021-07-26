@@ -16,7 +16,8 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun provideChatClient(@ApplicationContext context: Context) = ChatClient.Builder(
+    fun provideChatClient(@ApplicationContext context: Context) =
+        ChatClient.Builder(
         context.getString(R.string.api_key),
         context
     ).build()

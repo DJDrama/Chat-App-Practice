@@ -8,6 +8,7 @@ import javax.inject.Inject
 
 @HiltAndroidApp
 class BaseApplication: Application() {
+
     @Inject
     lateinit var client: ChatClient
 
