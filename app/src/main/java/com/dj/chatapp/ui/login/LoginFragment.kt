@@ -8,11 +8,13 @@ import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.viewbinding.ViewBinding
 import com.dj.chatapp.BaseFragment
 import com.dj.chatapp.R
 import com.dj.chatapp.databinding.FragmentLoginBinding
 import com.dj.chatapp.util.Constants
+import com.dj.chatapp.util.navigateSafely
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onEach
@@ -50,7 +52,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
                     }
                     is LoginEvent.Success -> {
                         setupIdleUiState()
-                        Toast.makeText(requireContext(), "Login Success", Toast.LENGTH_LONG).show()
+                        findNavController().navigateSafely(R.id.action_loginFragment_to_channelFragment)
                     }
                 }
             }
